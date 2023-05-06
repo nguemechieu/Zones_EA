@@ -1,0 +1,8 @@
+name ="Zones EA"
+version = "0.1.0"
+description = "AI powered trading  software"
+author= ["NOEL M NGUEMECHIEU"]
+python = "^3.11"
+[build-system]
+requires = ["requirements.txt"]
+[build-dependencies]
