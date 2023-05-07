@@ -1,14 +1,14 @@
 # Zones EA
-!['ZONE EA'](src/images/ZONES EA/Slide1.PNG)
+Copyright (c) 2020-2023 Zones EA
+![docs](src/License/LICENSE)
+![ZONES EA](./src/images/ZONES EA/Slide1.PNG)
 ## Icon
 
-!['ZONE EA'](src/images/ZONES EA/slide1_Qwl_1.ico)
+![ZONES EA](./src/images/ZONES EA/slide1_Qwl_1.ico)
 # Description :
           ZONES EA  is an ai powered professional  
           trading application using the standard platform MT4 ,MT5 and others
-
 # Architecture
-
 !['Architecture'](src/images/Architecture/zones_ea/Slide3.PNG)
 !['Architecture'](src/images/Architecture/zones_ea/Slide4.PNG)
 ## Growing list of features:

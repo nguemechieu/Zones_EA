@@ -7,8 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90041675-39b4-4fca-a702-24221dc395d7" name="Changes" comment="goodsetup5">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="90041675-39b4-4fca-a702-24221dc395d7" name="Changes" comment="good setup5">
       <change beforePath="$PROJECT_DIR$/src/News/news_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/News/news_7.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -276,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683497552183</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="good setup5">
+      <created>1683498004134</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1683498004134</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +312,8 @@
     <MESSAGE value="goodsetup3" />
     <MESSAGE value="goodsetup4" />
     <MESSAGE value="goodsetup5" />
-    <option name="LAST_COMMIT_MESSAGE" value="goodsetup5" />
+    <MESSAGE value="good setup5" />
+    <option name="LAST_COMMIT_MESSAGE" value="good setup5" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
