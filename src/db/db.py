@@ -3,10 +3,10 @@ from tkinter import Message
 from MySQLdb import connect
 
 
-class Db(object):
-    def __init__(self):
+class Db:
+    def __init__(self, db_user, db_password, db_host):
 
-        self.conn = connect(host='localhost', user='root', password='Bigboss307#'
+        self.conn = connect(host=db_host, user=db_user, password=db_password
                             )
 
         self.cur = self.conn.cursor()

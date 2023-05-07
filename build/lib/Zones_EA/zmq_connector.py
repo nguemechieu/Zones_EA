@@ -175,7 +175,7 @@ class DwxZeromqConnector(object):
             self._PULL_SOCKET_STATUS['state'] = False
 
             # PUSH
-            self._PUSH_Monitor_Thread = Thread(target=self._DWX_ZMQ_EVENT_MONITOR_,
+            self._PUSH_Monitor_Thread = Thread(target=self._dwx_zmq_event_monitor_,
                                                args=("PUSH",
                                                      self._PUSH_SOCKET.get_monitor_socket(),))
 
@@ -183,7 +183,7 @@ class DwxZeromqConnector(object):
             self._PUSH_Monitor_Thread.start()
 
             # PULL
-            self._PULL_Monitor_Thread = Thread(target=self._DWX_ZMQ_EVENT_MONITOR_,
+            self._PULL_Monitor_Thread = Thread(target=self._dwx_zmq_event_monitor_,
                                                args=("PULL",
                                                      self._PULL_SOCKET.get_monitor_socket(),))
 
@@ -603,7 +603,9 @@ class DwxZeromqConnector(object):
                                 string_delimiter)
                             if self._verbose:
                                 print(
-                                    "\n[" + _symbol + "] " + _timestamp + " (" + _time + "/" + _open + "/" + _high + "/" + _low + "/" + _close + "/" + _tick_vol + "/" + _spread + "/" + _real_vol + ") TIME/OPEN/HIGH/LOW/CLOSE/TICKVOL/SPREAD/VOLUME")
+                                    "\n[" + _symbol + "] " + _timestamp + " (" + _time + "/" + _open + "/" + _high + "/"
+                                    + _low + "/" + _close + "/" + _tick_vol + "/" + _spread + "/" + _real_vol
+                                    + ") TIME/OPEN/HIGH/LOW/CLOSE/TICKVOL/SPREAD/VOLUME")
                                 # Update Market Rate DB
                             if _symbol not in self._Market_Data_DB.keys():
                                 self._Market_Data_DB[_symbol] = {}
@@ -659,7 +661,7 @@ class DwxZeromqConnector(object):
 
     ##########################################################################
 
-    def _DWX_ZMQ_EVENT_MONITOR_(self,
+    def _dwx_zmq_event_monitor_(self,
                                 socket_name,
                                 monitor_socket: bool = True):
 

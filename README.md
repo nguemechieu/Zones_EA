@@ -1,76 +1,61 @@
 ## Zones EA
-!['ZONE EA](src/images/zones_ea.png)
+
+!['ZONE EA](src/images/ZONES EA/Slide1.png)
+
 # Description :
+
           ZONES EA  is an ai powered professional  
           trading application using the standard platform MT4 ,MT5 and others
-## Drag & Drop Python Connector for MT4 & MT5
+
+# Architecture:
+
+!['Architecture'](src/images/Architecture/zones_ea/Slide3.png)
+!['Architecture'](src/images/Architecture/zones_ea/Slide4.png)
 
 ## Growing list of features:
 
-* Python login to Metatrader5 Terminal
-* Python Connection keep alive function
-* Get MT5 Account Info→ Python client
-* Python Client Open New Orders → MT5
- (Verify the sending, and verifying the receiving the order ,in MetaTrader5)
-* Python Client can Change(take profit,stop loss) /Cancel/Open Orders → MT5
-* Python Close/Partly Close Positions → MT5
-* MT5 Execution info→ Python client
-* MT5 → Python Get all Open orders & Positions
-* MT5 → Python Get static account information
-* MT5 → Python Get dynamic account info like [balance, equity, margin, free margins]
-* MT5 → Python Get instrument information [pip value, max lot, tick size, tick value]
-* MT5 → Python Get last tick data [date, bid, ask, vol ]
-* MT5 → Python Get bar data [date, open, low, high, close, vol]
-* MT5 → Python Get last X ticks array[date, bid, ask, last,vol]
-* MT5 → Python Get last X bars array[date, open, low, high, close, vol]
-* MT5 → Python Get indicator data from MT5 to your script - coming soon!
-
-# Features:
-
+- AI Trading Terminal
 - Mysql database connection
-- Telegram client and Telegram Trader
+- Telegram client
 - Live screenshot
+- Trade Reports
 - Trade News event
+- Live trade on Telegram
 - VPS
-- docker environment
-- TCP connection
-- Terminal connection
-![screenshot](MT4/Files/USDCHF5.gif)
-==================== Installations =============================
+- Upcoming features cryptocurrencies trading Terminal integration
+  ![screenshot](MT4/Files/USDCHF5.gif)
+
+# ________ Installations _____________
 
 ## Requirements
 
-- Python >= 3.10
-- pyzmq
-- zmq
-- mysql
-- mql-zmq (library package)
+    - Python ~= 3.10
+    - pyzmq
+    - zmq
+    - mysql
+    - mql-zmq (library package)
 
-## MT5 installation flow:
+# MT4 or MT5 python
 
-![alt text](https://github.com/TheSnowGuru/PyTrader-python-mt5-trading-api-connector/blob/master/Pytrader_API_installation_MT5.png  "Installation flow")
+## Installation flow:
 
-# MT4 python
+![alt text](src/images/ZONES EA/slide2.png "Installation flow")
 
-## installation flow:
-
-![alt text](src/images/installation.png "Installation flow")
-
-## myLib documentation
+## Documentation
 
 See documentation
-MT5 [here](https://github.com/TheSnowGuru/PyTrader-python-mt4-mt5-trading-api-connector-drag-n-drop/blob/master/Pytrader_API%20for%20MT5.pdf)
-See documentation
-MT4 [here](https://github.com/TheSnowGuru/PyTrader-python-mt4-mt5-trading-api-connector-drag-n-drop/blob/master/Pytrader_API%20for%20MT4.pdf)
+ZONES_EA MT4 MT5 [click here](https://github.com/nguemechieu/zones_ea/blob/master/src/docs/installation.pdf)
 
-## Linux installation: 
+## Linux installation:
+
 You can run your strategies on linux through wine.    
-Here is a ready docker + Wine:   [here](https://hub.docker.com/r/scottyhardy/docker-wine/)  
+Here is a ready docker + Wine:   [here](https://hub.docker.com//docker-wine/nguemechieu/zones_ea)
 
-## Get the EA working for all instruments:
-## MT5 python ==> Get FULL Version [here](https://www.mql5.com/en/market/product/58259)
-## MT4 python ==> Get FULL Version [here](https://www.mql5.com/en/market/product/58254)
+# Virtual environment
 
+## Docker installation
 
-
-
+- Command: docker install , docker pull , docker run -d zones_ea
+-     docker login 
+-     docker pull zones_ea
+-     docker run -d zones_ea

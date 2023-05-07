@@ -1,11 +1,10 @@
 import configparser
 import math
 import tkinter
-from datetime import time
-
-import openai
+from datetime import time, datetime
 
 from src.Miscellaneous.ff_news import CheckNews
+from src.db.db import Db
 from src.modules.DwxZmqExecution import DwxZmqExecution
 from src.modules.DwxZmqReporting import DwxZmqReporting
 from src.zmq_connector import DwxZeromqConnector
@@ -14,12 +13,49 @@ from src.zmq_connector import DwxZeromqConnector
 class ZonesEa(tkinter.Tk):
     def __init__(self):
         tkinter.Tk.__init__(self)
+        self.title("Zones EA                " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        self.conf = configparser.ConfigParser()
+        self.conf.read(filenames='conf.INI')  # path of your .ini file
+
+        self.db_password = "Bigboss307#"  # self.conf.get(section="MYSQL", option='db_password')
+        self.db_host = "localhost"  # self.conf.get(section="MYSQL", option='db_host')
+        self.db_user = "root"  # self.conf.get(section="MYSQL", option='db_user')
+
+        self.db = Db(db_user=self.db_user,
+                     db_host=self.db_host,
+                     db_password=self.db_password)
+        self.db.cur.execute("CREATE  DATABASE IF NOT EXISTS Zones_EA")
+        self.db.cur.execute("USE Zones_EA")
+        self.db.cur.execute(
+            "CREATE TABLE IF NOT EXISTS Zones_EA.Zones (id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), "
+            "buy_price DOUBLE, sell_price DOUBLE, buy_volume DOUBLE, sell_volume DOUBLE, "
+            "buy_time TIMESTAMP, sell_time TIMESTAMP, buy_price_change DOUBLE, sell_price_change DOUBLE, "
+            "buy_volume_change DOUBLE, sell_volume_change DOUBLE)")
+
+        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Accounts (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
+                            "name VARCHAR(255), balance DOUBLE, currency VARCHAR(255))")
+        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Orders (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
+                            "zone_id INTEGER, account_id INTEGER, symbol VARCHAR(255), "
+                            "quantity DOUBLE, price DOUBLE, side VARCHAR(255), "
+                            "created_at TIMESTAMP)")
+
+        # Create tables candles to be used later
+        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Candles (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
+                            "zone_id INTEGER, account_id INTEGER, symbol VARCHAR(255), "
+                            "open_time TIMESTAMP, open_price DOUBLE, high_price DOUBLE, low_price DOUBLE, close_price "
+                            "DOUBLE,"
+                            "volume DOUBLE, created_at TIMESTAMP)")
+        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Candles2 (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
+                            "zone_id INTEGER, account_id INTEGER, symbol VARCHAR(255), "
+                            "open_time TIMESTAMP, open_price DOUBLE, high_price DOUBLE, low_price DOUBLE, close_price "
+                            "DOUBLE,"
+                            "volume DOUBLE, created_at TIMESTAMP)")
 
         self.confirm_zone = None
         self.buy_zone = None
         self.sell_zone = None
         self.cancel_zone = None
-        self.openai = openai
+
         self.zones_connect = DwxZeromqConnector(self)
 
         self.update_account_balance = None
@@ -44,28 +80,9 @@ class ZonesEa(tkinter.Tk):
         self.redo = None
         self.undo = None
         self.delete_zone = None
-        self.conf = configparser.ConfigParser()
-        self.conf.read('conf.ini')  # path of your .ini file
-        self.openai.api_type = self.conf.get(section="OPENAI", option="OPENAI_API_TYPE")
-        self.openai.api_version = self.conf.get(section="OPENAI", option="OPENAI_API_VERSION")
-        self.openai.api_base = self.conf.get(section="OPENAI",
-                                             option="OPENAI_API_BASE")  # Your Azure OpenAI resource's endpoint value.
-        self.openai.organization = self.conf.get(section="OPENAI", option='OPENAI_ORGANIZATION')
-        self.openai.api_key = self.conf.get(section="OPENAI", option="OPENAI_API_KEY")
-        self.openai.api_url = self.conf.get(section="OPENAI", option="OPENAI_API_URL")
-        # self.openai.Model.list()
-        # self.openai.Engine.list()
-        # self.response = openai.ChatCompletion.create(
-        #     engine="TECHSOPRO",  # The deployment name you chose when you deployed the ChatGPT or GPT-4 model.
-        #     messages=[
-        #         {"role": "system", "content": "Assistant is a large language model trained by OpenAI."},
-        #         {"role": "user", "content": "Who were the founders of Microsoft?"}])
 
-        # print(self.response)
-        # print(self.response['choices'][0]['message']['content'])
-        self.title("Zones  EA")
         self.geometry("1530x780")
-        self.iconbitmap("../src/images/zones_ea.ico")
+        self.iconbitmap('../src/images/ZONES EA/slide1_Qwl_12.ico')
         self.resizable(True, True)
         self.configure(bg="blue")
         self.configure(highlightbackground="blue")
@@ -95,12 +112,11 @@ class ZonesEa(tkinter.Tk):
         self.editmenu.add_command(label="Redo", command=self.redo)
         self.editmenu.add_separator()
         self.menu.add_cascade(label="Insert ", menu=self.insertmenu)
-
-        self.viewmenu = tkinter.Menu(self.menu, tearoff=0)
-        self.menu.add_cascade(label="View", menu=self.viewmenu)
-        self.viewmenu.add_command(label="View zone", command=self.view_zone)
-        self.viewmenu.add_command(label="Edit zone", command=self.edit_zone)
-        self.viewmenu.add_command(label="Add zone", command=self.add_zone)
+        self.viewing = tkinter.Menu(self.menu, tearoff=0)
+        self.menu.add_cascade(label="View", menu=self.viewing)
+        self.viewing.add_command(label="View zone", command=self.view_zone)
+        self.viewing.add_command(label="Edit zone", command=self.edit_zone)
+        self.viewing.add_command(label="Add zone", command=self.add_zone)
 
         self.menu.add_cascade(label="Charts", menu=self.chart)
         self.menu.add_cascade(label=" Data ", menu=self.market_data)

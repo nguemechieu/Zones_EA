@@ -1,8 +1,17 @@
+import configparser
 import math
+import os
 import tkinter
-from datetime import time
+from datetime import time, datetime
+
+import joblib
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report
+from sklearn.model_selection import train_test_split
 
 from src.Miscellaneous.ff_news import CheckNews
+from src.db.db import Db
 from src.modules.DwxZmqExecution import DwxZmqExecution
 from src.modules.DwxZmqReporting import DwxZmqReporting
 from src.zmq_connector import DwxZeromqConnector
@@ -11,7 +20,52 @@ from src.zmq_connector import DwxZeromqConnector
 class ZonesEa(tkinter.Tk):
     def __init__(self):
         tkinter.Tk.__init__(self)
-        # zero mq binding
+        self.title("Zones EA                " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        self.conf = configparser.ConfigParser()
+        self.conf.read('conf.INI')  # path of your .ini file
+
+        self.db_user = "root"  # self.conf.get(section="mysql", option='db_user')
+        self.db_password = "Bigboss307#"  # self.conf.get(section="mysql", option='db_password')
+        self.db_host = "localhost"  # self.conf.get(section="mysql", option='db_host')
+
+        self.db = Db(
+            db_host=self.db_host,
+
+            db_user=self.db_user,
+            db_password=self.db_password
+
+        )
+        self.db.cur.execute("CREATE  DATABASE IF NOT EXISTS Zones_EA")
+        self.db.cur.execute("USE Zones_EA")
+        self.db.cur.execute(
+            "CREATE TABLE IF NOT EXISTS Zones_EA.Zones (id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), "
+            "buy_price DOUBLE, sell_price DOUBLE, buy_volume DOUBLE, sell_volume DOUBLE, "
+            "buy_time TIMESTAMP, sell_time TIMESTAMP, buy_price_change DOUBLE, sell_price_change DOUBLE, "
+            "buy_volume_change DOUBLE, sell_volume_change DOUBLE)")
+
+        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Accounts (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
+                            "name VARCHAR(255), balance DOUBLE, currency VARCHAR(255))")
+        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Orders (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
+                            "zone_id INTEGER, account_id INTEGER, symbol VARCHAR(255), "
+                            "quantity DOUBLE, price DOUBLE, side VARCHAR(255), "
+                            "created_at TIMESTAMP)")
+
+        # Create tables candles to be used later
+        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Candles (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
+                            "zone_id INTEGER, account_id INTEGER, symbol VARCHAR(255), "
+                            "open_time TIMESTAMP, open_price DOUBLE, high_price DOUBLE, low_price DOUBLE, close_price "
+                            "DOUBLE,"
+                            "volume DOUBLE, created_at TIMESTAMP)")
+        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Candles2 (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
+                            "zone_id INTEGER, account_id INTEGER, symbol VARCHAR(255), "
+                            "open_time TIMESTAMP, open_price DOUBLE, high_price DOUBLE, low_price DOUBLE, close_price "
+                            "DOUBLE,"
+                            "volume DOUBLE, created_at TIMESTAMP)")
+
+        self.confirm_zone = None
+        self.buy_zone = None
+        self.sell_zone = None
+        self.cancel_zone = None
 
         self.zones_connect = DwxZeromqConnector(self)
 
@@ -37,7 +91,58 @@ class ZonesEa(tkinter.Tk):
         self.redo = None
         self.undo = None
         self.delete_zone = None
-        self.title("Zones  EA")
+        # self.conf = configparser.ConfigParser()
+        # self.conf.read('conf.ini')  # path of your .ini file
+        # self.openai.api_type = self.conf.get(section="OPENAI", option="OPENAI_API_TYPE")
+        # self.openai.api_version = self.conf.get(section="OPENAI", option="OPENAI_API_VERSION")
+        # self.openai.api_base = self.conf.get(section="OPENAI",
+        #                                      option="OPENAI_API_BASE")  # Your Azure OpenAI resource's endpoint value.
+        # self.openai.organization = self.conf.get(section="OPENAI", option='OPENAI_ORGANIZATION')
+        # self.openai.api_key = self.conf.get(section="OPENAI", option="OPENAI_API_KEY")
+        # self.openai.api_url = self.conf.get(section="OPENAI", option="OPENAI_API_URL")
+        # self.openai=openai
+        # self.openai.Model.list()
+        # self.openai.Engine.list()
+        # self.response = openai.ChatCompletion.create(
+        #     engine="TECHSOPRO",  # The deployment name you chose when you deployed the ChatGPT or GPT-4 model.
+        #     messages=[
+        #         {"role": "system", "content": "Assistant is a large language model trained by OpenAI."},
+        #         {"role": "user", "content": "Who were the founders of Microsoft?"}])
+
+        # print(self.response)
+        # print(self.response['choices'][0]['message']['content'])
+
+        self.df = pd.read_csv('DataSet.csv')
+
+        self.exists = os.path.isfile('saved_model.pkl')
+        if self.exists:
+            os.remove('saved_model.pkl')
+
+        self.columns = ['OPEN', 'CLOSE', 'HIGH', 'LOW', 'VOLUME', 'MA', 'STO', 'FIBO', 'AC', 'BUL', 'ICCI', 'MACD',
+                        'RSI', 'BEAR', 'AD', 'ATR', 'AO', 'MOM', 'OSMA']
+        self.labels = self.df['MARKET'].values
+        self.features = self.df[list(self.columns)].values
+
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.features, self.labels,
+                                                                                test_size=0.5)
+        self.clf = RandomForestClassifier(n_estimators=5)
+        self.clf = self.clf.fit(self.X_train, self.y_train)
+
+        self.accuracy = self.clf.score(self.X_train, self.y_train)
+        print(' Training Data accuracy ', self.accuracy * 100)
+
+        self.accuracy = self.clf.score(self.X_test, self.y_test)
+        print(' Testing Data accuracy ', self.accuracy * 100)
+
+        self.ypredict = self.clf.predict(self.X_train)
+        print('\n Training classification report\n', classification_report(self.y_train, self.ypredict))
+
+        self.ypredict = self.clf.predict(self.X_test)
+        print('\n Testing classification report\n', classification_report(self.y_test, self.ypredict))
+
+        # Output a pickle file for the model
+        joblib.dump(self.clf, 'saved_model.pkl')
+
         self.geometry("1530x780")
         self.iconbitmap("../src/images/zones_ea.ico")
         self.resizable(True, True)
@@ -45,7 +150,6 @@ class ZonesEa(tkinter.Tk):
         self.configure(highlightbackground="blue")
         self.configure(highlightcolor="white")
         self.configure(highlightthickness=1)
-
         self.menu = tkinter.Menu(self)
         self.config(menu=self.menu)
         self.filename = tkinter.Menu(self.menu, tearoff=0)
@@ -88,55 +192,63 @@ class ZonesEa(tkinter.Tk):
         self.canvas.configure(bg="black")
         self.canvas.configure(highlightbackground="green")
         self.canvas.configure(highlightcolor="white")
-        self.canvas.create_rectangle(0, 0, 1030, 500, fill="black")
+        self.canvas.create_rectangle(0, 0, 1530, 780, fill="black")
 
         self.account_info = tkinter.Label(self.master, text="========================  Account "
                                                             "Info============================"
                                           , bg="black", fg="white")
-        self.account_info.place(x=300, y=0)
+        self.account_info.place(x=500, y=0)
         self.account_info.configure(bg="black")
         self.account_info.configure(highlightbackground="green")
         self.account_info.configure(highlightcolor="white")
         self.account_info.configure(font=("Helvetica", 12))
         self.account_info.configure(highlightthickness=1)
-        self.account_info.configure(text="Account Info")
-        self.account_info_data = self.zones_connect.get_account_info()
 
-        self.account_balance = tkinter.Label(self.master, text="Balance ", bg="Green", fg="red")
-        self.account_balance.place(x=10, y=100)
-        self.account_balance.configure(bg="Green")
-        self.account_balance.configure(highlightbackground="green")
-        self.account_balance.configure(highlightcolor="white")
-        self.account_balance.configure(font=("Helvetica", 12))
-        self.account_balance.configure(highlightthickness=1)
-        self.account_balance.configure(text="Balance")
+        # CREATE TRADING BUTTONS
+        self.grid = tkinter.Frame(self, bg="black")
+        self.grid.place(x=0, y=0)
+        self.grid.configure(bg="black")
+        self.grid.configure(highlightbackground="green")
+        self.grid.configure(highlightcolor="white")
+        self.grid.configure(highlightthickness=1)
+        self.grid.grid_columnconfigure(0, weight=1)
+        self.grid.grid_columnconfigure(1, weight=1)
+        self.grid.grid_columnconfigure(2, weight=1)
 
-        self.account_balance_label = tkinter.Label(self.master, text="Balance", bg="black", fg="red")
-        self.account_balance_label.place(x=0, y=60)
-        self.account_balance_label.configure(bg="black")
-        self.account_balance_label.configure(highlightbackground="green")
-        self.account_balance_label.configure(highlightcolor="white")
-        self.account_balance_label.configure(font=("Helvetica", 12))
-        self.account_balance_label.configure(highlightthickness=1)
-        self.account_balance_label.configure(text="Balance")
-        self.account_balance_entry = tkinter.Entry(self.master)
-        self.account_balance_entry.place(x=0, y=70)
-        self.account_balance_entry.configure(bg="black")
+        self.sell = tkinter.Button(self.grid, text="Sell", command=self.sell_zone)
+        self.sell.grid(row=0, column=0)
+        self.sell.configure(bg="white")
+        self.sell.configure(highlightbackground="green")
+        self.sell.configure(highlightcolor="black")
+        self.sell.configure(font=("Helvetica", 12))
 
-        self.symbol_info = tkinter.Label(self.master, text="Symbol Info", bg="black", fg="red")
-        self.symbol_info.place(x=0, y=20)
-        self.symbol_info.configure(bg="black")
-        self.symbol_info.configure(highlightbackground="green")
-        self.symbol_info.configure(highlightcolor="white")
-        self.symbol_info.configure(font=("Helvetica", 12))
-        self.symbol_info.configure(highlightthickness=1)
+        self.buy = tkinter.Button(self.grid, text="Buy", command=self.buy_zone)
+        self.buy.grid(row=0, column=1)
+        self.buy.configure(bg="white")
+        self.buy.configure(highlightbackground="green")
+        self.buy.configure(highlightcolor="black")
+        self.price = 0
+        self.buy.configure(font=("Helvetica", 12))
+        self.buy.configure(highlightthickness=1)
+        self.buy.configure(highlightcolor="white")
+        self.buy.configure(highlightbackground="green")
 
-        self.price = self.zones_connect.send_track_prices_request(_symbols=self.symbol)
+        self.cancel = tkinter.Button(self.grid, text="Cancel", command=self.cancel_zone)
+        self.cancel.grid(row=0, column=2)
+        self.cancel.configure(bg="white")
+        self.cancel.configure(highlightbackground="green")
+        self.cancel.configure(highlightcolor="black")
+        self.cancel.configure(font=("Helvetica", 12))
+
+        self.grid.grid_rowconfigure(0, weight=1)
+        self.grid.grid_rowconfigure(1, weight=1)
+        self.grid.grid_rowconfigure(2, weight=1)
+
+        self.conf = tkinter.Button(self.grid, text="Confirm", command=self.confirm_zone)
 
         self.zones_connect.subscribe_marketdata(
             _symbol=self.symbol
         )
-        self.zones_connect.send_track_rates_request()
 
         self.strategy = DwxZeromqConnector(self)
         self.strategy.get_all_open_trades()
@@ -151,7 +263,6 @@ class ZonesEa(tkinter.Tk):
         if self.trade_signal() == 1:
             self.zones_connect.send_command(
                 _symbol='AUDUSD',
-
                 _price=0
                 ,
                 _lots=self.lot,
@@ -180,8 +291,7 @@ class ZonesEa(tkinter.Tk):
             self.zones_connect.send_command(
                 _symbol='AUDUSD',
 
-                _price=self.zones_connect.send_track_rates_request(
-                    _instruments=['AUDUSD']),
+                _price=0,
                 _magic=math.floor(time.min.second * 1000))
 
         elif self.trade_signal() == 4:
@@ -201,14 +311,13 @@ class ZonesEa(tkinter.Tk):
         elif self.trade_signal() == 5:
             self.zones_connect.send_command(
                 _symbol='AUDUSD',
-                _price=self.zones_connect.send_track_rates_request(_instruments=['AUDUSD']),
+                _price=0,
                 _lots=self.lot,
                 _action='BUYSTOP',
                 _type=5,
                 _ticket=math.floor(
                     time.max.second * 1000),
                 _magic=math.floor(time.min.second * 1000), _sl=50, _tp=100)
-
         elif self.trade_signal() == 6:
             self.zones_connect.send_command(
                 _symbol='AUDUSD',
@@ -235,6 +344,8 @@ class ZonesEa(tkinter.Tk):
         # check for news for a currency
         currency_result = news.check_currency(currency='EUR')
         print(currency_result)
+        if currency_result == 1:
+            return 1
         print('')
 
         # check for news for an instrument
@@ -261,5 +372,5 @@ class ZonesEa(tkinter.Tk):
         return 3
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     ZonesEa()

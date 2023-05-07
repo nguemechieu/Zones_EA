@@ -3,7 +3,7 @@
 //|                                 Copyright 2020, Dmitrievsky Max. |
 //|                        https://www.mql5.com/ru/users/dmitrievsky |
 //+------------------------------------------------------------------+
-#property copyright "Copyright 2020, Dmitrievsky Max."
+#property copyright "Copyright 2020, Dmitrievich Max."
 #property link      "https://www.mql5.com/ru/users/dmitrievsky"
 #property version   "1.00"
 #include <MT4Orders.mqh>
