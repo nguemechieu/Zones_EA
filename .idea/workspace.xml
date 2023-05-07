@@ -8,7 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90041675-39b4-4fca-a702-24221dc395d7" name="Changes" comment="good setup5">
-      <change beforePath="$PROJECT_DIR$/src/News/news_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/News/news_7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,11 +89,11 @@
       <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Zones\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Trader\Zones_EA\src\License" />
+      <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Trader\Zones_EA\MT4" />
       <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Trader\Zones_EA\src\docs" />
       <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Trader\Zones_EA" />
       <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Trader\Zones_EA\src" />
-      <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Zones_EA\src" />
-      <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Zones_EA\src\images" />
     </key>
   </component>
   <component name="RunManager" selected="Python.zones_ea">
@@ -282,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683498004134</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="good setup5">
+      <created>1683500082383</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1683500082383</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
