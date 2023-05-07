@@ -1,6 +1,10 @@
-## Zones EA
+# Zones EA
 
-![ZONE EA](src/images/ZONES EA/Slide1.png)
+![ZONE EA](src/images/ZONES EA/Slide1.PNG)
+
+## Icon
+
+![ZONE EA](src/images/ZONES EA/slide1_Qwl_1.ico)
 
 # Description :
 

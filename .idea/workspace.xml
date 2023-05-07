@@ -1,37 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90041675-39b4-4fca-a702-24221dc395d7" name="Changes" comment="goodsetup5">
-      <change afterPath="$PROJECT_DIR$/conf.INI" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saved_model.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataSet.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/News/news_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Telegram.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/docs/installation.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/ZONES EA/Slide1.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/ZONES EA/Slide1.SVG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/ZONES EA/Slide2.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/ZONES EA/Slide2.SVG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/saved_model.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/zones.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/zones_ea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.egg-info/SOURCES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/Zones_EA/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/zmq_connector.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/Zones_EA/zmq_connector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/zones_ea.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/Zones_EA/zones_ea.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Zones_EA-0.1.0-py3.11.egg" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Zones_EA-0.1.0-py3.11.egg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/News/news_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/News/news_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cat_trader.mq5" beforeDir="false" afterPath="$PROJECT_DIR$/src/cat_trader.mq5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conf.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zones_ea.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/zones_ea.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/News/news_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/News/news_7.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +249,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683385745759</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="goodsetu6">
+      <created>1683494850507</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1683494850507</updated>
+    </task>
+    <task id="LOCAL-00018" summary="goodsetup5">
+      <created>1683495124962</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1683495124962</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
