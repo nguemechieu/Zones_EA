@@ -1,6 +1,6 @@
 ## Zones EA
 
-!['ZONE EA](src/images/ZONES EA/Slide1.png)
+![ZONE EA](src/images/ZONES EA/Slide1.png)
 
 # Description :
 
@@ -9,8 +9,8 @@
 
 # Architecture:
 
-!['Architecture'](src/images/Architecture/zones_ea/Slide3.png)
-!['Architecture'](src/images/Architecture/zones_ea/Slide4.png)
+![Architecture](src/images/Architecture/zones_ea/Slide3.PNG)
+![Architecture](src/images/Architecture/zones_ea/Slide4.PNG)
 
 ## Growing list of features:
 
@@ -35,14 +35,10 @@
     - mysql
     - mql-zmq (library package)
 
-# MT4 or MT5 python
+# MT4 or MT5 Installation flow:
 
-## Installation flow:
-
-![alt text](src/images/ZONES EA/slide2.png "Installation flow")
-
+![alt text](src/images/ZONES EA/Slide2.PNG)Installation flow
 ## Documentation
-
 See documentation
 ZONES_EA MT4 MT5 [click here](https://github.com/nguemechieu/zones_ea/blob/master/src/docs/installation.pdf)
 
