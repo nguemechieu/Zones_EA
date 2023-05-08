@@ -2,11 +2,11 @@
 
      copyright (c) 2022 - 2023  
 
-!['ZONES EA'](./src/images/ZONES EA/Slide1.PNG)
+!['ZONES'](./src/images/zones_ea.png)
 
 ## icon
 
-!['ZONES EA'](./src/images/ZONES EA/slide1_Qwl_1.ico)
+!['ZONES'](./src/images/zones_ea.ico)
 
 # Description :
 

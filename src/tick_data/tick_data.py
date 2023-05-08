@@ -3,7 +3,7 @@
     Sample code:
     dwx_tick_data_io.py
     --
-    @author: Darwinex Labs (www.darwinex.com)
+    @author: Darwin-ex Labs (www.OpenDarwin.com)
     
     Copyright (c) 2017-2019, Darwinex. All rights reserved.
     

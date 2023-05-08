@@ -9,7 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="90041675-39b4-4fca-a702-24221dc395d7" name="Changes" comment="good setup5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/News/news_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/News/news_7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tick_data/dwx_tickdata_download.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tick_data/dwx_tickdata_download.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tick_data/tick_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tick_data/tick_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zones_ea.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/zones_ea.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683500082383</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="good setup5">
+      <created>1683500991008</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1683500991008</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

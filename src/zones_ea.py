@@ -16,11 +16,9 @@ class ZonesEa(tkinter.Tk):
         self.title("Zones EA                " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
         self.conf = configparser.ConfigParser()
         self.conf.read(filenames='conf.INI')  # path of your .ini file
-
         self.db_password = "Bigboss307#"  # self.conf.get(section="MYSQL", option='db_password')
         self.db_host = "localhost"  # self.conf.get(section="MYSQL", option='db_host')
         self.db_user = "root"  # self.conf.get(section="MYSQL", option='db_user')
-
         self.db = Db(db_user=self.db_user,
                      db_host=self.db_host,
                      db_password=self.db_password)
@@ -51,38 +49,37 @@ class ZonesEa(tkinter.Tk):
                             "DOUBLE,"
                             "volume DOUBLE, created_at TIMESTAMP)")
 
+        self.zones_connect = DwxZeromqConnector(self)
+        self.lot = 0.01
         self.confirm_zone = None
         self.buy_zone = None
         self.sell_zone = None
         self.cancel_zone = None
-
-        self.zones_connect = DwxZeromqConnector(self)
-
         self.update_account_balance = None
-        self.symbol = 'AUDUSD'
+        self.symbol = None
         self.tick_data = None
         self.market_data = None
-        self.copymenu_ = None
+        self.copy_menu = None
         self.check_news = None
         self.tools = None
         self.chart = None
         self.view = None
-        self.insertmenu = None
+        self.insert_menu = None
         self.save = None
         self.sign_out = None
         self.sign_in = None
         self.save_file = None
         self.open_file = None
-        self.lot = 0.01
+
         self.view_zone = None
         self.edit_zone = None
         self.add_zone = None
         self.redo = None
         self.undo = None
         self.delete_zone = None
-
         self.geometry("1530x780")
-        self.iconbitmap('../src/images/ZONES EA/slide1_Qwl_12.ico')
+        self.iconbitmap(bitmap="../src/images/ZONES EA/slide1_Qwl_12.ico")
+
         self.resizable(True, True)
         self.configure(bg="blue")
         self.configure(highlightbackground="blue")
@@ -107,30 +104,25 @@ class ZonesEa(tkinter.Tk):
         self.filename.add_separator()
         self.editmenu = tkinter.Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label="Edit", menu=self.editmenu)
-        self.editmenu.add_cascade(label="Copy ", menu=self.copymenu_)
+        self.editmenu.add_cascade(label="Copy ", menu=self.copy_menu)
         self.editmenu.add_command(label="Undo", command=self.undo)
         self.editmenu.add_command(label="Redo", command=self.redo)
         self.editmenu.add_separator()
-        self.menu.add_cascade(label="Insert ", menu=self.insertmenu)
+        self.menu.add_cascade(label="Insert ", menu=self.insert_menu)
         self.viewing = tkinter.Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label="View", menu=self.viewing)
         self.viewing.add_command(label="View zone", command=self.view_zone)
         self.viewing.add_command(label="Edit zone", command=self.edit_zone)
         self.viewing.add_command(label="Add zone", command=self.add_zone)
-
         self.menu.add_cascade(label="Charts", menu=self.chart)
         self.menu.add_cascade(label=" Data ", menu=self.market_data)
-
         self.menu.add_cascade(label="Tools", menu=self.tools)
-
         self.canvas = tkinter.Canvas(self, width=800, height=500, bg="black")
-
         self.canvas.place(x=400, y=50)
         self.canvas.configure(bg="black")
         self.canvas.configure(highlightbackground="green")
         self.canvas.configure(highlightcolor="white")
         self.canvas.create_rectangle(0, 0, 1530, 780, fill="black")
-
         self.account_info = tkinter.Label(self.master, text="========================  Account "
                                                             "Info============================"
                                           , bg="black", fg="white")
@@ -152,7 +144,7 @@ class ZonesEa(tkinter.Tk):
         self.grid.grid_columnconfigure(1, weight=1)
         self.grid.grid_columnconfigure(2, weight=1)
 
-        self.sell = tkinter.Button(self.grid, text="Sell", command=self.sell_zone)
+        self.sell = tkinter.Button(self, text="SELL", command=self.sell_zone)
         self.sell.grid(row=0, column=0)
         self.sell.configure(bg="white")
         self.sell.configure(highlightbackground="green")
@@ -181,22 +173,14 @@ class ZonesEa(tkinter.Tk):
         self.grid.grid_rowconfigure(1, weight=1)
         self.grid.grid_rowconfigure(2, weight=1)
 
-        self.conf = tkinter.Button(self.grid, text="Confirm", command=self.confirm_zone)
-
-        self.zones_connect.subscribe_marketdata(
-            _symbol=self.symbol
-        )
-
+        self.conf = tkinter.Button(self.grid, text="Confirm", command="")
+        self.zones_connect.subscribe_marketdata(_symbol="AUDUSD")
         self.strategy = DwxZeromqConnector(self)
         self.strategy.get_all_open_trades()
-
         self.reporting = DwxZmqReporting(self)
-
         self.execute = DwxZmqExecution(self)
-
         self.zones_connect.generate_default_order_dict()
         self.zones_connect.get_account_info()
-
         if self.trade_signal() == 1:
             self.zones_connect.send_command(
                 _symbol='AUDUSD',
@@ -215,7 +199,6 @@ class ZonesEa(tkinter.Tk):
         elif self.trade_signal() == 2:
             self.zones_connect.send_command(
                 _symbol='AUDUSD',
-
                 _price=self.price,
                 _lots=self.lot,
                 _action='SELL',
@@ -234,10 +217,7 @@ class ZonesEa(tkinter.Tk):
         elif self.trade_signal() == 4:
             self.zones_connect.send_command(
                 _symbol='AUDUSD',
-
-                _price=self.price
-
-                ,
+                _price=self.price,
                 _lots=self.lot,
                 _action='SELLLIMIT',
                 _type=4,
@@ -248,7 +228,7 @@ class ZonesEa(tkinter.Tk):
         elif self.trade_signal() == 5:
             self.zones_connect.send_command(
                 _symbol='AUDUSD',
-                _price=0,
+                _price=125.56,
                 _lots=self.lot,
                 _action='BUYSTOP',
                 _type=5,

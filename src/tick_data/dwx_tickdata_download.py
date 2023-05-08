@@ -3,14 +3,14 @@
 """
 Created on Mon Oct 29 17:24:20 2018
 
-Script: dwx_tickdata_download.py (Python 3)
+Script: dwx_tick data_download.py (Python 3)
 --
-Downloads tick data from the Darwinex tick data server. This code demonstrates
+Downloads tick data from the Darwin-ex tick data server. This code demonstrates
 how to download data for one specific date/hour combination, but can be 
 extended easily to downloading entire assets over user-specified start/end 
 datetime ranges.
 
-Requirements: Your Darwinex FTP credentials.
+Requirements: Your Darwin-ex FTP credentials.
 
 Result: Dictionary of pandas DataFrame objects by date/hour.
         (columns: float([ask, size]), index: millisecond timestamp)
@@ -33,7 +33,7 @@ Example code:
      2018-10-22 00:01:10.576000+00:00  9.47202  1000000.0
                                   ...        ...
 
-@author: Darwinex Labs
+@author: Darwin-ex Labs
 @twitter: https://twitter.com/darwinexlabs
 @web: http://blog.darwinex.com/category/labs
 
