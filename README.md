@@ -41,12 +41,12 @@
     - mql-zmq (library package)
     - pandas
 
-# MT4 or MT5 Installation flow:
+# Zones_EA.exe ,MT4 or MT5 Installation flow
 
 !['alt text'](src/images/ZONESEA/Slide2.PNG)
 ## Documentation
 
-See documentation [click here !](src/docs/ZONES EA.pdf)
+See documentation [click here !](src/docs/ZONESEA.pdf)
 
 # Linux installation:
 
