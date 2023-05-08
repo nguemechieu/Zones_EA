@@ -16,7 +16,6 @@ catboost~=1.2
 iso8601~=1.1.0
 httpx~=0.24.0
 requests~=2.30.0
-MetaTrader5~=5.0.45
 scikit-learn~=1.2.2
 openai~=0.27.6
 joblib~=1.2.0
