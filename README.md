@@ -8,7 +8,7 @@
 
 !['ZONES'](./src/images/zones_ea.ico)
 
-# Description :
+# Description
 
           ZONES EA  is an ai powered professional  
           trading application using the standard platform MT4 ,MT5 and others
@@ -31,7 +31,8 @@
 - VPS
 - Upcoming features cryptocurrencies trading Terminal integration
   ![screenshot](MT4/Files/USDCHF5.gif)
-# ________ Installations _____________
+
+# ________ Installation _____________
 ## Requirements
     - Python ~= 3.10
     - pyzmq
@@ -41,11 +42,10 @@
 
 # MT4 or MT5 Installation flow:
 
-!['alt text'](src/images/ZONES EA/Slide2.PNG)Installation flow
-
+!['alt text'](src/images/ZONESEA/Slide2.PNG)
 ## Documentation
 
-See documentation [click here](https://github.com/nguemechieu/zones_ea/blob/master/src/docs/installation.pdf)
+See documentation [documentations](src/docs/ZONES EA.pdf)
 
 # Linux installation:
 
