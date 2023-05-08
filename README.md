@@ -4,7 +4,7 @@
 
 !['ZONES'](./src/images/zones_ea.png)
 
-## icon
+## Icon
 
 !['ZONES'](./src/images/zones_ea.ico)
 
@@ -39,13 +39,14 @@
     - zmq
     - mysql
     - mql-zmq (library package)
+    - pandas
 
 # MT4 or MT5 Installation flow:
 
 !['alt text'](src/images/ZONESEA/Slide2.PNG)
 ## Documentation
 
-See documentation [documentations](src/docs/ZONES EA.pdf)
+See documentation [click here !](src/docs/ZONES EA.pdf)
 
 # Linux installation:
 
@@ -55,9 +56,7 @@ Here is a ready docker Wine:   [click here](https://hub.docker.com/docker-wine/n
 
 # Virtual environment
 
-# Docker installation
-
--     command: docker install , docker pull , docker run -d zones_ea
+-     command: docker pull , docker run -d zones_ea
 -     docker login 
 -     docker pull zones_ea
 -     docker run -d zones_ea
