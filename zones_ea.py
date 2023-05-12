@@ -3,25 +3,30 @@ import math
 import tkinter
 from datetime import time, datetime
 
-from src.Miscellaneous.ff_news import CheckNews
-from src.db.db import Db
-from src.modules.DwxZmqExecution import DwxZmqExecution
-from src.modules.DwxZmqReporting import DwxZmqReporting
-from src.zmq_connector import DwxZeromqConnector
+from Zones_EA.zmq_connector import DwxZeromqConnector
+
+from src.News.news import NewsEvent
+from src.db import Db
 
 
 class ZonesEa(tkinter.Tk):
     def __init__(self):
         tkinter.Tk.__init__(self)
         self.title("Zones EA                " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+        self.geometry("1530x780")
+
         self.conf = configparser.ConfigParser()
+        self.iconbitmap(bitmap="./src/images/ZONESEA/slide1_Qwl_12.ico")
+
         self.conf.read(filenames='conf.INI')  # path of your .ini file
         self.db_password = "Bigboss307#"  # self.conf.get(section="MYSQL", option='db_password')
         self.db_host = "localhost"  # self.conf.get(section="MYSQL", option='db_host')
         self.db_user = "root"  # self.conf.get(section="MYSQL", option='db_user')
+
         self.db = Db(db_user=self.db_user,
-                     db_host=self.db_host,
-                     db_password=self.db_password)
+                        db_host=self.db_host,
+                        db_password=self.db_password)
         self.db.cur.execute("CREATE  DATABASE IF NOT EXISTS Zones_EA")
         self.db.cur.execute("USE Zones_EA")
         self.db.cur.execute(
@@ -77,8 +82,6 @@ class ZonesEa(tkinter.Tk):
         self.redo = None
         self.undo = None
         self.delete_zone = None
-        self.geometry("1530x780")
-        self.iconbitmap(bitmap="../src/images/ZONES EA/slide1_Qwl_12.ico")
 
         self.resizable(True, True)
         self.configure(bg="blue")
@@ -177,7 +180,9 @@ class ZonesEa(tkinter.Tk):
         self.zones_connect.subscribe_marketdata(_symbol="AUDUSD")
         self.strategy = DwxZeromqConnector(self)
         self.strategy.get_all_open_trades()
+        from src.modules.DwxZmqReporting import DwxZmqReporting
         self.reporting = DwxZmqReporting(self)
+        from src.modules.DwxZmqExecution import DwxZmqExecution
         self.execute = DwxZmqExecution(self)
         self.zones_connect.generate_default_order_dict()
         self.zones_connect.get_account_info()
@@ -252,7 +257,8 @@ class ZonesEa(tkinter.Tk):
         # create instance with default values
         # the downloaded news information will be stored in a news sub folder
         # if the folder does not exit it will be created
-        news = CheckNews(
+
+        news = NewsEvent(
             url='https://nfs.faireconomy.media/ff_calendar_thisweek.xml?version=45f4bf06b3af96b68bf3dd03db821ab6',
             update_in_minutes=240,
             minutes_before_news=480,

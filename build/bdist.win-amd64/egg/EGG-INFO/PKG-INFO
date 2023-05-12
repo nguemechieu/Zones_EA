@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: Zones-EA
+Version: 0.1.0
+Summary: Trade management software for MetaTrader
+Home-page: https://github.com/nguemechieu/Zones
+Author: Noel M nguemechieu
+Author-email: nguemechieu@live.com
+License: SEE LICENSE IN LICENSE
+Keywords: run,open,trade
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: Apache 2
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/x-rst
+License-File: LICENSE
