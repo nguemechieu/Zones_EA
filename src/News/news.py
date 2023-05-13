@@ -7,12 +7,11 @@ from dateutil.parser import *
 from dateutil.relativedelta import *
 
 
-class CheckNews:
+class NewsEvent:
 
     def __init__(self,
                  url: str = 'https://nfs.faireconomy.media/ff_calendar_thisweek.xml?version'
-                            '=45f4bf06b3af96b68bf3dd03db821ab6'
-                 ,
+                            '=45f4bf06b3af96b68bf3dd03db821ab6',
                  update_in_minutes: int = 240,
                  minutes_before_news: int = 480,
                  minutes_after_news: int = 60,
@@ -28,7 +27,7 @@ class CheckNews:
 
             Remarks:
                 The FF calendar will be saved in an XML file in subfolder ./News/       !!! take care
-                If ./News does not exists, it will be created
+                If ./News does not exist, it will be created
         """
         self.number_of_items = None
         self.url = url
@@ -180,7 +179,8 @@ class CheckNews:
                               number_of_items: int = 5) -> dict:
 
         self.number_of_items = number_of_items
-        if self.number_of_items > 10: self.number_of_items = 10
+        if self.number_of_items > 10:
+            self.number_of_items = 10
 
         """
             Create dictionary with next x news items.

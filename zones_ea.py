@@ -3,10 +3,9 @@ import math
 import tkinter
 from datetime import time, datetime
 
-from Zones_EA.zmq_connector import DwxZeromqConnector
-
 from src.News.news import NewsEvent
 from src.db import Db
+from src.zmq_connector import DwxZeromqConnector
 
 
 class ZonesEa(tkinter.Tk):
@@ -17,17 +16,17 @@ class ZonesEa(tkinter.Tk):
         self.geometry("1530x780")
 
         self.conf = configparser.ConfigParser()
-        self.iconbitmap(bitmap="./src/images/ZONESEA/slide1_Qwl_12.ico")
+        self.iconbitmap(bitmap="./src/images/zones_ea.ico")
 
-        self.conf.read(filenames='conf.INI')  # path of your .ini file
-        self.db_password = "Bigboss307#"  # self.conf.get(section="MYSQL", option='db_password')
-        self.db_host = "localhost"  # self.conf.get(section="MYSQL", option='db_host')
-        self.db_user = "root"  # self.conf.get(section="MYSQL", option='db_user')
+        self.db = Db()
 
-        self.db = Db(db_user=self.db_user,
-                        db_host=self.db_host,
-                        db_password=self.db_password)
-        self.db.cur.execute("CREATE  DATABASE IF NOT EXISTS Zones_EA")
+        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.News (_id INTEGER PRIMARY KEY AUTO_INCREMENT" +
+
+                            ", zone_id INTEGER, symbol VARCHAR(255), "
+                            "name VARCHAR(255), description VARCHAR(255), "
+                            "url VARCHAR(255), image_url VARCHAR(255), "
+                            "created_at TIMESTAMP)")
+
         self.db.cur.execute("USE Zones_EA")
         self.db.cur.execute(
             "CREATE TABLE IF NOT EXISTS Zones_EA.Zones (id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), "

@@ -12,4 +12,4 @@ Classifier: License :: Apache 2
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.11
 Description-Content-Type: text/x-rst
-License-File: LICENSE
+License-File: LICENSE.md
