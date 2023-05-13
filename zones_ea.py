@@ -1,5 +1,6 @@
 import configparser
 import math
+import os
 import tkinter
 from datetime import time, datetime
 
@@ -125,8 +126,8 @@ class ZonesEa(tkinter.Tk):
         self.canvas.configure(highlightbackground="green")
         self.canvas.configure(highlightcolor="white")
         self.canvas.create_rectangle(0, 0, 1530, 780, fill="black")
-        self.account_info = tkinter.Label(self.master, text="========================  Account "
-                                                            "Info============================"
+        self.account_info = tkinter.Label(self.master, text="========== Account "
+                                                            "Info============="
                                           , bg="black", fg="white")
         self.account_info.place(x=500, y=0)
         self.account_info.configure(bg="black")
@@ -296,3 +297,7 @@ class ZonesEa(tkinter.Tk):
 
 if __name__ == '__main__':
     ZonesEa()
+
+else:
+
+    os.environ['TZ'] = 'UTC'

@@ -7,31 +7,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90041675-39b4-4fca-a702-24221dc395d7" name="Changes" comment="good setup5">
-      <change afterPath="$PROJECT_DIR$/Zones_EA" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Zones_EA-0.1.0-py3-none-any.whl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Zones_EA-0.1.0.tar.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql.Zones_EA" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql.Zones_EA_db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Exchanges/CoinbasePro.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/License/LICENSE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/python-app.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-app.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="90041675-39b4-4fca-a702-24221dc395d7" name="Changes" comment="good setup6">
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/zones_ea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/zones_ea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zones_EA.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.egg-info/PKG-INFO" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.egg-info/SOURCES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/requires.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zones_EA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf.INI" beforeDir="false" afterPath="$PROJECT_DIR$/conf.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/EGG-INFO/PKG-INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/EGG-INFO/SOURCES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/EGG-INFO/dependency_links.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/EGG-INFO/requires.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/EGG-INFO/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/Telegram.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/clustering_catboost.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/copyFactory.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/logger.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/zmq_connector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/zones_ea.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/Telegram.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/clustering_catboost.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/copyFactory.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/logger.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/zmq_connector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/zones_ea.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/configuration_client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/configuration_client_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/copyFactory_models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/history_client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/history_client_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/signal_client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/signal_client_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/stopoutListener.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/stopoutListenerManager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/stopoutListenerManager_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/transactionListener.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/transactionListenerManager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/transactionListenerManager_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/userLogListener.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/userLogListenerManager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/userLogListenerManager_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/trading_client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/copyFactory/trading_client_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/domain_client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/domain_client_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/errorHandler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/httpClient.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/httpClient_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/metaApi_client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/metaApi_client_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/methodAccessException.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/timeoutException.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf.ini" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/License/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/News/news.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/News/news.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zones.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saved_model.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/saved_model.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MetaTrader_Helpers/Report_Conversion/MT_TO_PYTHON/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/MetaTrader_Helpers/Report_Conversion/MT_TO_PYTHON/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zones_ea.py" beforeDir="false" afterPath="$PROJECT_DIR$/zones_ea.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -328,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683545262745</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="good setup6">
+      <created>1683938387816</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1683938387816</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +410,8 @@
     <MESSAGE value="goodsetup4" />
     <MESSAGE value="goodsetup5" />
     <MESSAGE value="good setup5" />
-    <option name="LAST_COMMIT_MESSAGE" value="good setup5" />
+    <MESSAGE value="good setup6" />
+    <option name="LAST_COMMIT_MESSAGE" value="good setup6" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -4,9 +4,7 @@ numpy~=1.24.3
 pyzmq~=25.0.2
 matplotlib~=3.7.1
 zmq~=0.0.0
-
 DateTime~=5.1
-
 pytest~=7.3.1
 pytz~=2023.3
 python-dateutil~=2.8.2
@@ -14,9 +12,6 @@ httpx~=0.24.0
 requests~=2.30.0
 scikit-learn~=1.2.2
 setuptools~=67.7.2
-
-
 mysqlclient~=2.1.1
-scipy~=1.10.1
 iso8601~=1.1.0
 urllib3~=2.0.2

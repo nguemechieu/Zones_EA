@@ -1,5 +1,5 @@
 LICENSE.md
-README.rst
+README.md
 setup.cfg
 setup.py
 Zones_EA.egg-info/PKG-INFO
@@ -16,3 +16,4 @@ src/manage.py
 src/models.py
 src/test.py
 src/zmq_connector.py
+src/zones_ea.py

@@ -56,5 +56,5 @@ We're always keen to hear your feedback, suggestions and anything in between.
 
 **Have an idea for a useful script?**
 
-Send us an email at info@darwinex.com with the subject line **[GitHub User Request for Darwinex Labs]** and a brief
+Email us at info@darwinex.com with the subject line **[GitHub User Request for Darwinex Labs]** and a brief
 description of what you have in mind.

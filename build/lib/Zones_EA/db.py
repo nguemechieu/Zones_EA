@@ -1,15 +1,38 @@
+from configparser import ConfigParser
+from sqlite3 import connect
 from tkinter import Message
 
-from MySQLdb import connect
+import MySQLdb
 
 
-class Db(object):
-    def __init__(self, db_user: str = None, db_password: str = None, db_host: str = None):
+class Db:
+    def __init__(self):
 
-        self.conn = connect(host=db_host, user=db_user, password=db_password
-                            )
+        # Create mysql connection
+
+        self.config = ConfigParser()
+        self.config.add_section(
+
+            'mysql'
+        )
+
+        self.config.read(filenames="config.ini")
+
+        self.host = self.config.get(section='mysql', option='host')
+        self.user = self.config.get(section='mysql', option='user')
+        self.password = self.config.get(section='mysql', option='password')
+        self.database = self.config.get(section='mysql', option='database')
+        self.port = self.config.get(section='mysql', option='port')
+
+        self.conn = MySQLdb.connect(host=self.host, user=self.user, passwd=self.password, db=self.database)
 
         self.cur = self.conn.cursor()
+        self.cur.execute("CREATE  DATABASE IF NOT EXISTS Zones_EA")
+
+        self.cur.execute("USE Zones_EA")
+
+        self.cur.execute('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTO_INCREMENT, username TEXT, '
+                         'email TEXT, phone TEXT, password TEXT)')
 
     def get_all_users(self):
         self.cur.execute('SELECT * FROM users')
