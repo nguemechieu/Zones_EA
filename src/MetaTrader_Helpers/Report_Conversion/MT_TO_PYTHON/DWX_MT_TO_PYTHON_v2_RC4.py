@@ -2,7 +2,7 @@
 
 """
 Created on Mon Feb 04 12:01:07 2019
-@author: Darwinex Labs (www.darwinex.com)
+@author: Darwin-ex Labs (www.darwinex.com)
 
 DWX_MT_TO_PYTHON_v2_RC4.py
 

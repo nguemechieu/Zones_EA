@@ -4,7 +4,7 @@
       <settings>
         <option name="imageTag" value="latest" />
         <option name="containerName" value="zones_ea" />
-        <option name="sourceFilePath" value="$PROJECT_DIR$/Zones_EA.Dockerfile" />
+        <option name="sourceFilePath" value="$PROJECT_DIR$/Dockerfile" />
       </settings>
     </deployment>
     <method v="2" />

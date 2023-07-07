@@ -40,7 +40,8 @@ class DwxZmqExecution(object):
         if _exec_dict['_action'] == 'OPEN':
 
             _check = '_action'
-            self._zmq._DWX_MTX_NEW_TRADE_(_order=_exec_dict)
+            self._zmq._DWX_MTX_NEW_TRADE_(symbol, price, quantity, order_type, stop_loss, take_profit, slippage,
+                                          _order=_exec_dict)
 
         # CLOSE TRADE
         elif _exec_dict['_action'] == 'CLOSE':

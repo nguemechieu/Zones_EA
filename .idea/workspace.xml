@@ -8,74 +8,87 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90041675-39b4-4fca-a702-24221dc395d7" name="Changes" comment="good setup6">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/zones_Dockerfile.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/d/4d66f8ccc1cf41f8444c9890dff4bea02851a50d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/c/7c875fef54268bc433a7fc46aa5fd6e96d58f32f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/85e196f8b14e2c65e889dcb376573714a8735ed5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c91c0296909b5ea3c496fde69e9dc44a6c6ae5f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8e2edce0d507e1297474f25c00cae94258db38d8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/7/974a3c864f13517ac0dcf2f5b328bec9a6c2a08b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/abe873c46a4997ebc5d998d9df98915d7c96c051" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3a3a3d8665ff06f145c770515ef51f4044a8c66" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d963cfa4f30e8b1b8e4cbc730a52d5f1b2464ae0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de839dd12ee7326d2264e03d665a22d88dab9c0d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/6/e6ee4ae7fdce4b55ee2d65c7133de7dd089fb9e2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/8/38e0f20034143e65addaae83ae7e71881e649266" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/a/4a8486805915245bbbe2e3c8c1a9d680c6843a82" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/d/4d66f8ccc1cf41f8444c9890dff4bea02851a50d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/1/51074e66e615ec7bc5afa3b4022a883cd94c0dec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/c/7c875fef54268bc433a7fc46aa5fd6e96d58f32f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/5/85e196f8b14e2c65e889dcb376573714a8735ed5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/c/8c91c0296909b5ea3c496fde69e9dc44a6c6ae5f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/e/8e2edce0d507e1297474f25c00cae94258db38d8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/7/974a3c864f13517ac0dcf2f5b328bec9a6c2a08b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/b/abe873c46a4997ebc5d998d9df98915d7c96c051" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/3/d3a3a3d8665ff06f145c770515ef51f4044a8c66" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/9/d963cfa4f30e8b1b8e4cbc730a52d5f1b2464ae0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/e/de839dd12ee7326d2264e03d665a22d88dab9c0d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/6/e6ee4ae7fdce4b55ee2d65c7133de7dd089fb9e2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Instrument.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/News/news_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/News/news_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/News/news_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/News/news_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/News/news_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mt4ubuntu.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Trade.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/News.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/reset_password.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/zones_ea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/zones_ea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_6_2023_10_49_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_6_2023_10_49_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zones_EA.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.egg-info/SOURCES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/EGG-INFO/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/EGG-INFO/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/EGG-INFO/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/EGG-INFO/requires.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/EGG-INFO/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/Telegram.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/clustering_catboost.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/copyFactory.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/db.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/logger.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/zmq_connector.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bdist.win-amd64/egg/Zones_EA/zones_ea.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/Telegram.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/clustering_catboost.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/copyFactory.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/db.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/logger.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/zmq_connector.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/Zones_EA/zones_ea.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/configuration_client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/configuration_client_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/copyFactory_models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/history_client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/history_client_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/signal_client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/signal_client_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/stopoutListener.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/stopoutListenerManager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/stopoutListenerManager_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/transactionListener.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/transactionListenerManager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/transactionListenerManager_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/userLogListener.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/userLogListenerManager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/streaming/userLogListenerManager_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/trading_client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/copyFactory/trading_client_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/domain_client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/domain_client_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/errorHandler.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/httpClient.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/httpClient_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/metaApi_client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/metaApi_client_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/methodAccessException.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clients/timeoutException.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zones_EA" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38e0f20034143e65addaae83ae7e71881e649266" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zones_EA.Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/PKG-INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/SOURCES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/dependency_links.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zones_EA.egg-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zones_EA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Zones_EA.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Zones_EA-0.0.1-py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Zones_EA-0.0.1-py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Zones_EA-0.0.1.tar.gz" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Zones_EA-0.0.1.tar.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saved_model.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/saved_model.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MetaTrader_Helpers/Report_Conversion/MT_TO_PYTHON/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/MetaTrader_Helpers/Report_Conversion/MT_TO_PYTHON/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saved_model.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a8486805915245bbbe2e3c8c1a9d680c6843a82" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql.Zones_EA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql.Zones_EA_db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MetaTrader_Helpers/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MetaTrader_Helpers/Report_Conversion/MT_TO_PYTHON/DWX_MT_TO_PYTHON_v2_RC4.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/MetaTrader_Helpers/Report_Conversion/MT_TO_PYTHON/DWX_MT_TO_PYTHON_v2_RC4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/News/news.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/News/news.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Telegram.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Telegram.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/copyFactory.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/DwxZmqExecution.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/DwxZmqExecution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tick_data/tick_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tick_data/tick_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/account.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/account.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/forgot_password.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/forgot_password.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/home.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/register.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zmq_connector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/zmq_connector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zones.csv" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/51074e66e615ec7bc5afa3b4022a883cd94c0dec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zones_ea.py" beforeDir="false" afterPath="$PROJECT_DIR$/zones_ea.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,38 +128,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/nguem/Zones-EA/src/License",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.47816092",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "sqlGeneratorConfig",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nguem/OneDrive/Documents/GitHub/Zones_EA&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.47816092&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;sqlGeneratorConfig&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "java.sql.Driver",
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;java.sql.Driver&quot;,
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Zones_EA" />
       <recent name="C:\Users\nguem\Zones-EA\src\License" />
       <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Trader\Zones_EA" />
-      <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Zones_EA" />
       <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Zones_EA\src" />
       <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Zones_EA\MT4" />
     </key>
@@ -158,41 +171,17 @@
       <recent name="C:\Users\nguem\OneDrive\Documents\GitHub\Trader\Zones_EA\src\docs" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.Zones_EA">
+  <component name="RunManager" selected="Docker.zones.Dockerfile">
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
       <deployment type="dockerfile">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="zones.Dockerfile (1)" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="buildOnly" value="true" />
-          <option name="sourceFilePath" value="zones.Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="zones.Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="sourceFilePath" value="zones.Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Docker.Zones_EA" />
       <item itemvalue="Docker.zones.Dockerfile" />
-      <item itemvalue="Docker.zones.Dockerfile (1)" />
       <item itemvalue="Python.zones_ea" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Docker.Zones_EA" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -420,9 +409,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/clustering_catboost.py</url>
-          <line>259</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/zones_ea.py</url>
+          <line>152</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

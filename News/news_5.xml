@@ -406,6 +406,15 @@
 		<previous><![CDATA[-3.2%]]></previous>
 	</event>
 	<event>
+		<title>German 10-y Bond Auction</title>
+		<country>EUR</country>
+		<date><![CDATA[07-05-2023]]></date>
+		<time><![CDATA[9:33am]]></time>
+		<impact><![CDATA[Low]]></impact>
+		<forecast />
+		<previous><![CDATA[2.43|1.9]]></previous>
+	</event>
+	<event>
 		<title>OPEC Meetings</title>
 		<country>ALL</country>
 		<date><![CDATA[07-05-2023]]></date>
@@ -415,15 +424,6 @@
 		<previous />
 	</event>
 	<event>
-		<title>German 10-y Bond Auction</title>
-		<country>EUR</country>
-		<date><![CDATA[07-05-2023]]></date>
-		<time><![CDATA[10:42am]]></time>
-		<impact><![CDATA[Low]]></impact>
-		<forecast />
-		<previous><![CDATA[2.43|1.9]]></previous>
-	</event>
-	<event>
 		<title>Factory Orders m/m</title>
 		<country>USD</country>
 		<date><![CDATA[07-05-2023]]></date>
@@ -431,15 +431,6 @@
 		<impact><![CDATA[Low]]></impact>
 		<forecast><![CDATA[0.7%]]></forecast>
 		<previous><![CDATA[0.4%]]></previous>
-	</event>
-	<event>
-		<title>IBD/TIPP Economic Optimism</title>
-		<country>USD</country>
-		<date><![CDATA[07-05-2023]]></date>
-		<time><![CDATA[2:03pm]]></time>
-		<impact><![CDATA[Low]]></impact>
-		<forecast><![CDATA[45.3]]></forecast>
-		<previous><![CDATA[41.7]]></previous>
 	</event>
 	<event>
 		<title>Wards Total Vehicle Sales</title>
@@ -521,6 +512,15 @@
 		<impact><![CDATA[Low]]></impact>
 		<forecast />
 		<previous><![CDATA[3.51|1.4]]></previous>
+	</event>
+	<event>
+		<title>OPEC Meetings</title>
+		<country>ALL</country>
+		<date><![CDATA[07-06-2023]]></date>
+		<time><![CDATA[10:15am]]></time>
+		<impact><![CDATA[High]]></impact>
+		<forecast />
+		<previous />
 	</event>
 	<event>
 		<title>French 10-y Bond Auction</title>

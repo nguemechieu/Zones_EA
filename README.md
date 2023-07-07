@@ -24,17 +24,18 @@
 - AI Trading Terminal
 - Mysql database connection
 - Telegram client
-- Live screenshot
+- screenshot
 - Trade Reports
 - Trade News event
 - Live trade on Telegram
+- Live trade copies
 - VPS
 - Upcoming features cryptocurrencies trading Terminal integration
   ![screenshot](MT4/Files/USDCHF5.gif)
 
 # ________ Installation _____________
 ## Requirements
-    - Python ~= 3.10
+    - Python ~= 3.11
     - pyzmq
     - zmq
     - mysql

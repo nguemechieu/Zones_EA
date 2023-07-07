@@ -1,3 +1,4 @@
+import uuid
 from configparser import ConfigParser
 from sqlite3 import connect
 from tkinter import Message
@@ -5,7 +6,7 @@ from tkinter import Message
 import MySQLdb
 
 
-class Db:
+class Db(object):
     def __init__(self):
 
         # Create mysql connection
@@ -65,15 +66,13 @@ class Db:
             self, db_name,
             statement: str, data: str
 
-    ):
+    ) -> None:
         self.conn = connect(db_name)
         self.cur = self.conn.cursor()
         self.cur.execute(statement, data)
         self.conn.commit()
 
-        pass
-
-    def get_user_by_email(self, email):
+    def get_user_by_email(self, email: str):
         self.cur.execute('SELECT * FROM users WHERE email=?', email)
         user = self.cur.fetchone()
         if user:
@@ -84,4 +83,32 @@ class Db:
             message = "User not found"
             Message(text=message)
             return None
-        pass
+
+    def verify(self, username: str = "", password: str = ""):
+
+        self.cur.execute(
+            'SELECT * FROM users WHERE username=? AND password=?',
+            (username, password)
+        )
+        user = self.cur.fetchone()
+        if user:
+            self.cur.close()
+            print('Checking password')
+
+            self.cur.execute('SELECT * FROM users WHERE  username=? AND password=?', (username, password))
+            user[2] = self.cur.fetchone()
+            if user[2]:
+                self.cur.close()
+                return True
+
+            else:
+                self.cur.close()
+                message = "Wrong password"
+                Message(text=message)
+
+        else:
+            self.cur.close()
+            message = "username or password incorrect"
+            Message(text=message)
+
+        return False

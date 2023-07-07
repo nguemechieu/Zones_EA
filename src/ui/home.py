@@ -66,14 +66,14 @@ class CandlestickChart(object):
 
 
 class Home(tkinter.Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, controller):
         super().__init__()
-        self.parent = parent
+        self.parent = self.master
         self.controller = controller
 
         # create Menu Bar
 
-        self.menu_bar = tkinter.Menu(self)
+        self.menu_bar = tkinter.Menu(self.master)
 
 
 
@@ -86,4 +86,4 @@ class Home(tkinter.Frame):
         self.zones_connect.get_account_info()
 
     def logout(self):
-        self.controller.show_pages('login')
+        self.controller.show_pages('Login')

@@ -3,10 +3,11 @@ import unittest
 
 class Test(unittest.TestCase):
     def setUp(self):
-
+        # TODO document why this method is empty
         pass
 
     def tearDown(self):
+        # TODO document why this method is empty
         pass
 
 

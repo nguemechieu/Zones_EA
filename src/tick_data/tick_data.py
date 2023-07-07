@@ -5,7 +5,7 @@
     --
     @author: Darwin-ex Labs (www.OpenDarwin.com)
     
-    Copyright (c) 2017-2019, Darwinex. All rights reserved.
+    Copyright (c) 2017-2019, Darwin-ex. All rights reserved.
     
     Licensed under the BSD 3-Clause License, you may not use this file except 
     in compliance with the License. 

@@ -29,6 +29,8 @@ class NewsEvent:
                 The FF calendar will be saved in an XML file in subfolder ./News/       !!! take care
                 If ./News does not exist, it will be created
         """
+        self.forecast = None
+        self.previous = None
         self.number_of_items = None
         self.url = url
         self.update_in_minutes = update_in_minutes
@@ -57,7 +59,14 @@ class NewsEvent:
 
         keyfile = requests.get(self.url)
         xml_file = './News/news_' + str(self.lastUpdate.day) + '.xml'
-        open(xml_file, 'wb').write(keyfile.content)
+
+        if xml_file in os.listdir('./News'):
+
+            open(xml_file, 'wb').write(keyfile.content)
+
+        else:
+            with open(xml_file, 'wb') as f:
+                f.write(keyfile.content)
 
         self.titles.clear()
         self.countries.clear()
@@ -109,7 +118,7 @@ class NewsEvent:
 
         for index in range(0, len(self.news_items), 1):
             if self.news_items[index][0] == currency:
-                # check time 
+                # check time
                 if ((self.news_items[index][
                          1].timestamp() - self.minutes_before_news * 60) < datetime.now().timestamp() < (
                         self.news_items[index][1].timestamp() + self.minutes_after_news * 60)):

@@ -1,54 +1,44 @@
-#! bin/grep
-#Checking operating system
-RUN echo "Checking operating system"
-if [[ "${OS}" == "Darwin" ]]; then 
-    echo "Darwin"
-if [[ "${OS}" == "Linux" ]]; then
-    echo "Linux"
-     
-  #Verify that python is installed
+#!/bin/bash
 
-  RUN echo "Verifying that python is installed"
- if [ ! -f /usr/local/bin/python ]; then
-    echo "Python is not installed"
+# Copyright 2022, MetaQuotes Ltd.
+# MetaTrader download url
+URL="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/mt4oldsetup.exe"
+#https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/mt4ubuntu.sh
+# Wine version to install: stable or devel
+WINE_VERSION="stable"
 
-    echo "Downloading and Installing python latest version"
-    RUN apt-get update
-    RUN apt-get install -y python
-    RUN apt-get upgrade -y 
+# Prepare: switch to 32 bit and add Wine key
+dpkg --add-architecture i386
+wget -nc https://dl.winehq.org/wine-builds/winehq.key
+mv winehq.key /usr/share/keyrings/winehq-archive.key
 
-else RUN echo "python is already installed" 
-if [[ "${OS}" == "Window" ]]; then
+# Get Ubuntu version and trim to major only
+OS_VER=$(lsb_release -r |cut -f2 |cut -d "." -f1)
+# Choose repository based on Ubuntu version
+# shellcheck disable=SC2004
+if (( $OS_VER >= 22)); then
+  wget -nc https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+   mv winehq-jammy.sources /etc/apt/sources.list.d/
+elif (( $OS_VER < 22 )) && (( $OS_VER >= 21 )); then
+  wget -nc https://dl.winehq.org/wine-builds/ubuntu/dists/impish/winehq-impish.sources
+   mv winehq-impish.sources /etc/apt/sources.list.d/
+elif (( $OS_VER < 21 )) && (( $OS_VER >=20 )); then
+  wget -nc https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources
+  mv winehq-focal.sources /etc/apt/sources.list.d/
+elif (( $OS_VER < 20 )); then
+  wget -nc https://dl.winehq.org/wine-builds/ubuntu/dists/bionic/winehq-bionic.sources
+   mv winehq-bionic.sources /etc/apt/sources.list.d/
+fi
 
- #Verify that python is installed
-  if [ ! -f /usr/local/bin/python]; then
-   echo "Python is not installed"
-   echo "Downloading and Installing python latest version"
-   #RUN curl -L https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe
+# Update package and install Wine
+apt update
+apt upgrade -y
+apt install --install-recommends winehq-$WINE_VERSION
 
-   #install python
-   RUN python-3.11.4-amd64.exe
+# Download MetaTrader
+wget $URL -O mt4setup.exe
 
-  if [[ "${OS}" == "MacOs" ]]; then
-
-    echo "Darwin"
-
-
-
-
-
-
-#Verify that python is installed
-
-RUN echo "Verifying that python is installed"
-if [ ! -f /usr/local/bin/python ]; then
-    echo "Python is not installed"
-else #Downloading and Installing python latest version
-    echo "Downloading and Installing python latest version"
-   
-
-
-
-RUN python setup.py
-
-RUN python zones_ea.py
+# Set environment to Windows 10
+WINEPREFIX=~/.mt4 WINEARCH=win32 winecfg -v=win10
+# Start MetaTrader installer in 32 bit environment
+WINEPREFIX=~/.mt4 WINEARCH=win32 wine mt4setup.exe

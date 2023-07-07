@@ -1,303 +1,161 @@
-import configparser
-import math
-import os
+import smtplib
 import tkinter
-from datetime import time, datetime
+from datetime import datetime
+from email.mime.text import MIMEText
+from tkinter import filedialog, RAISED, BOTTOM
 
-from src.News.news import NewsEvent
+from src.Trade import Trades
+# NOEL M NGUEMECHIEU
+# https://github.com/nguemechieu/telegramMt4Trader
 from src.db import Db
-from src.zmq_connector import DwxZeromqConnector
+from src.ui.forgot_password import ForgotPassword
+from src.ui.home import Home
+from src.ui.login import Login
+from src.ui.register import Register
+from src.ui.reset_password import ResetPassword
 
 
-class ZonesEa(tkinter.Tk):
+def send_email(subject: str = "", body: str = "", sender: str = "",
+               recipients=None, password: str = ""):
+    if recipients is None:
+        recipients = ["recipient1@gmail.com", "recipient2@gmail.com"]
+    msg = MIMEText(body)
+    msg['Subject'] = subject
+    msg['From'] = sender
+    msg['To'] = ', '.join(recipients)
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp_server:
+        smtp_server.login(sender, password)
+        smtp_server.sendmail(sender, recipients, msg.as_string())
+        print("Message sent!")
+
+
+class About(tkinter.Frame):
+    def __init__(self, master):
+        tkinter.Frame.__init__(self, master)
+        self.label = tkinter.Label(self.master, text="ZONES EA   |MT4 Trader | Version 1.0.0| About")
+        self.label.pack(fill=tkinter.X)
+        self.label2 = tkinter.Label(self.master, text="Developed by NGUEMECHIEU NOEL MARTIAL  in 2021")
+        self.label2.pack(fill=tkinter.X)
+        self.label3 = tkinter.Label(self.master, text="Contact: +1 302-317-6610")
+        self.label3.pack(fill=tkinter.X)
+        self.label4 = tkinter.Label(self.master, text="Email: nguemechieu@live.com")
+        self.label4.pack(fill=tkinter.X)
+        self.label5 = tkinter.Label(self.master, text="Github: https://github.com/nguemechieu/ZONES_EA")
+        self.label5.pack(fill=tkinter.X)
+        self.label6_description = tkinter.Label(self.master, text="Description:")
+        self.label6_description.pack(fill=tkinter.X)
+        self.label6 = tkinter.Label(self.master, text="ZONES EA is a trading platform based on MT4. It allows you to "
+                                                      "trade on the basis of your strategy."
+                                                      "The platform is based on the MT4 Trader, which is a trading "
+                                                      "platform based on the MetaTrader."
+                                                      "The application also enable you to send emails, message ,"
+                                                      "photos and videos to your friends. and telegram channel.")
+
+
+class App(object):
+
     def __init__(self):
-        tkinter.Tk.__init__(self)
-        self.title("Zones EA                " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        self.controller = self
+        self.frames = {}
 
-        self.geometry("1530x780")
+        self.filename = None
+        self.Messagebox = None
+        self.master = tkinter.Tk()
 
-        self.conf = configparser.ConfigParser()
-        self.iconbitmap(bitmap="./src/images/zones_ea.ico")
-
+        self.master.geometry("1530x780")
+        self.master.title("ZONES EA   |MT4 Trader " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        self.master.resizable(width=True, height=True)
+        self.master.iconbitmap(r"src\Images\zones_ea.ico")
+        self.master.config(bg="gray")
         self.db = Db()
+        self.trades = Trades()
+        self.trades.strategy('EURUSD')
+        self.menubar = tkinter.Menu(self.master)
 
-        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.News (_id INTEGER PRIMARY KEY AUTO_INCREMENT" +
+        self.file_menu = tkinter.Menu(self.menubar, tearoff=0)
+        self.menubar.add_cascade(label="File", menu=self.file_menu)
+        self.file_menu.add_command(label="Open", command=lambda: self.open_file())
+        self.file_menu.add_command(label="Save", command=lambda: self.save_file())
+        self.file_menu.add_separator()
+        self.file_menu.add_command(label="connect", command=lambda: self.connect())
+        self.login = tkinter.Menu(self.menubar, tearoff=0)
+        self.menubar.add_cascade(label="Login", menu=self.login)
+        self.login.add_command(label="Login", command=lambda: self.show_pages("Login"))
+        self.login.add_command(label="Register", command=lambda: self.show_pages("Register"))
+        self.help_menu = tkinter.Menu(self.menubar, tearoff=0)
+        self.menubar.add_cascade(label="Help", menu=self.help_menu)
+        self.file_menu.add_separator()
+        self.file_menu.add_command(label="Exit", command=self.master.quit)
+        self.master.config(menu=self.menubar)
 
-                            ", zone_id INTEGER, symbol VARCHAR(255), "
-                            "name VARCHAR(255), description VARCHAR(255), "
-                            "url VARCHAR(255), image_url VARCHAR(255), "
-                            "created_at TIMESTAMP)")
+        self.frame = tkinter.Frame(self.master, relief=RAISED)
+        self.master.iconbitmap(r"src\images\zones_ea.ico")
+        # self.master.iconphoto(True, tkinter.PhotoImage(file=r"src\images\zones_ea.ico"))
+        self.db = Db()
+        self.trades = Trades()
+        self.trades.strategy('EURUSD')
 
-        self.db.cur.execute("USE Zones_EA")
-        self.db.cur.execute(
-            "CREATE TABLE IF NOT EXISTS Zones_EA.Zones (id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), "
-            "buy_price DOUBLE, sell_price DOUBLE, buy_volume DOUBLE, sell_volume DOUBLE, "
-            "buy_time TIMESTAMP, sell_time TIMESTAMP, buy_price_change DOUBLE, sell_price_change DOUBLE, "
-            "buy_volume_change DOUBLE, sell_volume_change DOUBLE)")
+        self.frame.pack(fill=tkinter.BOTH, expand=1)
 
-        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Accounts (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
-                            "name VARCHAR(255), balance DOUBLE, currency VARCHAR(255))")
-        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Orders (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
-                            "zone_id INTEGER, account_id INTEGER, symbol VARCHAR(255), "
-                            "quantity DOUBLE, price DOUBLE, side VARCHAR(255), "
-                            "created_at TIMESTAMP)")
+    def delete_frame(self):
+        for _frame in self.master.winfo_children():
+            _frame.destroy()
 
-        # Create tables candles to be used later
-        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Candles (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
-                            "zone_id INTEGER, account_id INTEGER, symbol VARCHAR(255), "
-                            "open_time TIMESTAMP, open_price DOUBLE, high_price DOUBLE, low_price DOUBLE, close_price "
-                            "DOUBLE,"
-                            "volume DOUBLE, created_at TIMESTAMP)")
-        self.db.cur.execute("CREATE TABLE IF NOT EXISTS Zones_EA.Candles2 (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
-                            "zone_id INTEGER, account_id INTEGER, symbol VARCHAR(255), "
-                            "open_time TIMESTAMP, open_price DOUBLE, high_price DOUBLE, low_price DOUBLE, close_price "
-                            "DOUBLE,"
-                            "volume DOUBLE, created_at TIMESTAMP)")
+    def show_pages(self, page: str):
+        self.delete_frame()
+        for _frame in self.master.winfo_children():
+            _frame.destroy()
 
-        self.zones_connect = DwxZeromqConnector(self)
-        self.lot = 0.01
-        self.confirm_zone = None
-        self.buy_zone = None
-        self.sell_zone = None
-        self.cancel_zone = None
-        self.update_account_balance = None
-        self.symbol = None
-        self.tick_data = None
-        self.market_data = None
-        self.copy_menu = None
-        self.check_news = None
-        self.tools = None
-        self.chart = None
-        self.view = None
-        self.insert_menu = None
-        self.save = None
-        self.sign_out = None
-        self.sign_in = None
-        self.save_file = None
-        self.open_file = None
+        self.master.title(
+            "ZONES EA  |AI POWERED MT4 Trader |    " + page + " copyright " + str(datetime.year) + ", NGUEMECHIEU NOEL "
+                                                                                                   "MARTIAL")
+        if page in ['Login', 'Register', 'ForgotPassword', 'ResetPassword', 'Home', 'About']:
+            frames = [Login, Register, ForgotPassword, ResetPassword, Home, About]
+            for frame in frames:
+                if page == frame.__name__:
+                    frame = frame(self)
+                    frame.tkraise()
 
-        self.view_zone = None
-        self.edit_zone = None
-        self.add_zone = None
-        self.redo = None
-        self.undo = None
-        self.delete_zone = None
+    def connect(self):
+        self.delete_frame()
+        for _frame in self.master.winfo_children():
+            _frame.destroy()
 
-        self.resizable(True, True)
-        self.configure(bg="blue")
-        self.configure(highlightbackground="blue")
-        self.configure(highlightcolor="white")
-        self.configure(highlightthickness=1)
-        self.menu = tkinter.Menu(self)
-        self.config(menu=self.menu)
-        self.filename = tkinter.Menu(self.menu, tearoff=0)
-        self.menu.add_cascade(label="File", menu=self.filename)
-        self.filename.add_separator()
-        self.filename.add_command(label="Open file", command=self.open_file)
-        self.filename.add_separator()
-        self.filename.add_command(label="Save", command=self.save)
-        self.filename.add_separator()
-        self.filename.add_command(label="Save file ", command=self.save_file)
-        self.filename.add_separator()
-        self.filename.add_command(label="Sign in", command=self.sign_in)
-        self.filename.add_separator()
-        self.filename.add_command(label="Sign out", command=self.sign_out)
-        self.filename.add_separator()
-        self.filename.add_command(label="Exit", command=self.quit)
-        self.filename.add_separator()
-        self.editmenu = tkinter.Menu(self.menu, tearoff=0)
-        self.menu.add_cascade(label="Edit", menu=self.editmenu)
-        self.editmenu.add_cascade(label="Copy ", menu=self.copy_menu)
-        self.editmenu.add_command(label="Undo", command=self.undo)
-        self.editmenu.add_command(label="Redo", command=self.redo)
-        self.editmenu.add_separator()
-        self.menu.add_cascade(label="Insert ", menu=self.insert_menu)
-        self.viewing = tkinter.Menu(self.menu, tearoff=0)
-        self.menu.add_cascade(label="View", menu=self.viewing)
-        self.viewing.add_command(label="View zone", command=self.view_zone)
-        self.viewing.add_command(label="Edit zone", command=self.edit_zone)
-        self.viewing.add_command(label="Add zone", command=self.add_zone)
-        self.menu.add_cascade(label="Charts", menu=self.chart)
-        self.menu.add_cascade(label=" Data ", menu=self.market_data)
-        self.menu.add_cascade(label="Tools", menu=self.tools)
-        self.canvas = tkinter.Canvas(self, width=800, height=500, bg="black")
-        self.canvas.place(x=400, y=50)
-        self.canvas.configure(bg="black")
-        self.canvas.configure(highlightbackground="green")
-        self.canvas.configure(highlightcolor="white")
-        self.canvas.create_rectangle(0, 0, 1530, 780, fill="black")
-        self.account_info = tkinter.Label(self.master, text="========== Account "
-                                                            "Info============="
-                                          , bg="black", fg="white")
-        self.account_info.place(x=500, y=0)
-        self.account_info.configure(bg="black")
-        self.account_info.configure(highlightbackground="green")
-        self.account_info.configure(highlightcolor="white")
-        self.account_info.configure(font=("Helvetica", 12))
-        self.account_info.configure(highlightthickness=1)
+        self.frame = Login(self)
 
-        # CREATE TRADING BUTTONS
-        self.grid = tkinter.Frame(self, bg="black")
-        self.grid.place(x=0, y=0)
-        self.grid.configure(bg="black")
-        self.grid.configure(highlightbackground="green")
-        self.grid.configure(highlightcolor="white")
-        self.grid.configure(highlightthickness=1)
-        self.grid.grid_columnconfigure(0, weight=1)
-        self.grid.grid_columnconfigure(1, weight=1)
-        self.grid.grid_columnconfigure(2, weight=1)
+    def show_error(self, param):
+        if param is not None:
+            self.Messagebox = tkinter.Message(self.master, text=param, width=300)
+            print(param)
+            self.Messagebox.pack(side=BOTTOM)
+            self.Messagebox.after(3000, self.Messagebox.destroy)
 
-        self.sell = tkinter.Button(self, text="SELL", command=self.sell_zone)
-        self.sell.grid(row=0, column=0)
-        self.sell.configure(bg="white")
-        self.sell.configure(highlightbackground="green")
-        self.sell.configure(highlightcolor="black")
-        self.sell.configure(font=("Helvetica", 12))
+    def open_file(self):
+        filename = filedialog.askopenfilename()
+        if filename:
+            try:
+                self.trades.load_from_file(filename)
+                self.show_pages("Home")
+            except Exception as e:
+                self.show_error(str(e))
 
-        self.buy = tkinter.Button(self.grid, text="Buy", command=self.buy_zone)
-        self.buy.grid(row=0, column=1)
-        self.buy.configure(bg="white")
-        self.buy.configure(highlightbackground="green")
-        self.buy.configure(highlightcolor="black")
-        self.price = 0
-        self.buy.configure(font=("Helvetica", 12))
-        self.buy.configure(highlightthickness=1)
-        self.buy.configure(highlightcolor="white")
-        self.buy.configure(highlightbackground="green")
+    def save_file(self):
+        self.filename = filedialog.asksaveasfilename()
+        if self.filename is not None:
+            try:
+                self.trades.save_to_file(self)
+                self.show_pages("Login")
+            except Exception as e:
+                self.show_error(str(e))
 
-        self.cancel = tkinter.Button(self.grid, text="Cancel", command=self.cancel_zone)
-        self.cancel.grid(row=0, column=2)
-        self.cancel.configure(bg="white")
-        self.cancel.configure(highlightbackground="green")
-        self.cancel.configure(highlightcolor="black")
-        self.cancel.configure(font=("Helvetica", 12))
+        self.master.protocol("WM_DELETE_WINDOW", self.quit())
+        self.show_pages("Login")
 
-        self.grid.grid_rowconfigure(0, weight=1)
-        self.grid.grid_rowconfigure(1, weight=1)
-        self.grid.grid_rowconfigure(2, weight=1)
+    def mainloop(self):
+        self.master.mainloop()
 
-        self.conf = tkinter.Button(self.grid, text="Confirm", command="")
-        self.zones_connect.subscribe_marketdata(_symbol="AUDUSD")
-        self.strategy = DwxZeromqConnector(self)
-        self.strategy.get_all_open_trades()
-        from src.modules.DwxZmqReporting import DwxZmqReporting
-        self.reporting = DwxZmqReporting(self)
-        from src.modules.DwxZmqExecution import DwxZmqExecution
-        self.execute = DwxZmqExecution(self)
-        self.zones_connect.generate_default_order_dict()
-        self.zones_connect.get_account_info()
-        if self.trade_signal() == 1:
-            self.zones_connect.send_command(
-                _symbol='AUDUSD',
-                _price=0
-                ,
-                _lots=self.lot,
-                _action='BUY',
-                _type=0,
-                _ticket=math.floor(
-                    time.max.second * 1000
-                ),
-                _magic=math.floor(time.min.second * 1000)
 
-            )
-
-        elif self.trade_signal() == 2:
-            self.zones_connect.send_command(
-                _symbol='AUDUSD',
-                _price=self.price,
-                _lots=self.lot,
-                _action='SELL',
-                _type=0,
-                _ticket=math.floor(
-                    time.max.second * 1000),
-                _magic=math.floor(time.min.second * 1000))
-
-        elif self.trade_signal() == 3:
-            self.zones_connect.send_command(
-                _symbol='AUDUSD',
-
-                _price=0,
-                _magic=math.floor(time.min.second * 1000))
-
-        elif self.trade_signal() == 4:
-            self.zones_connect.send_command(
-                _symbol='AUDUSD',
-                _price=self.price,
-                _lots=self.lot,
-                _action='SELLLIMIT',
-                _type=4,
-                _ticket=math.floor(
-                    time.max.second * 1000),
-                _magic=math.floor(time.min.second * 1000), _sl=50, _tp=100)
-
-        elif self.trade_signal() == 5:
-            self.zones_connect.send_command(
-                _symbol='AUDUSD',
-                _price=125.56,
-                _lots=self.lot,
-                _action='BUYSTOP',
-                _type=5,
-                _ticket=math.floor(
-                    time.max.second * 1000),
-                _magic=math.floor(time.min.second * 1000), _sl=50, _tp=100)
-        elif self.trade_signal() == 6:
-            self.zones_connect.send_command(
-                _symbol='AUDUSD',
-                _price=self.price,
-                _lots=self.lot,
-                _action='SELLSTOP',
-                _type=6,
-                _ticket=math.floor(
-                    time.max.second * 1000),
-                _magic=math.floor(time.min.second * 1000), _sl=50, _tp=100)
-
-        self.mainloop()
-
-    def trade_signal(self, symbol: str = 'EURUSD'):
-        # create instance with default values
-        # the downloaded news information will be stored in a news sub folder
-        # if the folder does not exit it will be created
-
-        news = NewsEvent(
-            url='https://nfs.faireconomy.media/ff_calendar_thisweek.xml?version=45f4bf06b3af96b68bf3dd03db821ab6',
-            update_in_minutes=240,
-            minutes_before_news=480,
-            minutes_after_news=60)
-
-        # check for news for a currency
-        currency_result = news.check_currency(currency='EUR')
-        print(currency_result)
-        if currency_result == 1:
-            return 1
-        print('')
-
-        # check for news for an instrument
-        instrument_result = news.check_instrument(instrument='EURUSD')
-        print(instrument_result)
-        print('')
-
-        # get the next x news items
-        news_items = news.get_next_x_news_items(5)
-        print(news_items)
-        print('')
-        self.zones_connect.send_command(
-            _symbol=symbol,
-            _price=self.zones_connect.send_command(_symbol=symbol),
-            _lots=self.lot,
-            _action='BUY',
-            _type=0,
-            _ticket=math.floor(
-                time.max.second * 1000
-            ),
-            _magic=math.floor(time.min.second * 1000)
-
-        )
-        return 3
-
+# self.bind("<F7>", self.show_pages('about'))
 
 if __name__ == '__main__':
-    ZonesEa()
-
-else:
-
-    os.environ['TZ'] = 'UTC'
+    App().mainloop()

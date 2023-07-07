@@ -7,11 +7,14 @@ from src.zmq_connector import DwxZeromqConnector
 
 
 class Trades(object):
+    telegramBot_: TelegramBot
+    zmqConnector: DwxZeromqConnector
 
     def __init__(self):
+        self.strategy_list = None
+        self.chat_i = None
         self.db = Db()
-        self.telegramBot = TelegramBot(token='2032573404:AAEfu_tvVukCibiYf8uUdi6NcDpSmbuj3Tg')
-
+        self.telegramBot_ = TelegramBot(_token='5037946539:AAH3z1nVmqWyCnBis0w5m5FIb44TfVwOp8Y')
         self.zmqConnector = self.zones_connect = DwxZeromqConnector()
         self.execution = DwxZmqExecution(self.zmqConnector)
 
@@ -94,20 +97,32 @@ class Trades(object):
         self.zones_connect.subscribe_trades(self.symbol)
         self.zones_connect.subscribe_candles(self.symbol)
         self.zones_connect.subscribe_book_ticker(self.symbol)
-        self.telegramBot.get_me()
-        res = self.telegramBot.get_updates()
+        self.telegramBot_.get_me()
+        res = self.telegramBot_.get_updates()
+        if len(res['result']) == 0:
+            self.telegramBot_.send_message(chat_id=self.chat_i, message_text="No Updates")
+            # 'result': {'id': 805814430, 'first_name': 'noel martial', 'last_name': 'nguemechieu', 'username':
+            # 'bigbossnanager', 'type': 'private', 'active_usernames': ['bigbossnan ager'], 'bio': 'DevOps and
+            # software engineer . And Electronic engineer student', 'photo': {'small_file_id':
+            # 'AQADAQADq6cxG57ABzAACAIAA57ABzAABJeX9DnANEZbLwQ', 'small_file_unique_id': 'AQADq6cxG57ABzAAAQ',
+            # 'big_file_id': 'AQADAQADq6cxG57ABzAACAMAA57ABzAABJeX9DnANEZbLwQ', 'big_file_unique_id':
+            # 'AQADq6cxG57ABzAB'}}} {'ok': True, 'result': [{'update_id': 421639814, 'message': {'message_id': 23,
+            # 'from': {'id': 805814430, 'is_bot': False, 'first_name': 'noel martial', 'last_name': 'nguemechieu',
+            # 'username': 'bigbossnanager', 'language_code': 'en'}, 'chat': {'id': 805814430, 'first_name': 'noel
+            # martial', 'last_name': 'nguemechieu', 'username': 'bigbossnanager', 'type': 'private'},
+            # 'date': 1687447161, 'text': '/start', 'entities': [{'offset': 0, 'length': 6, 'type': 'bot_command'}]}}]}
+
+            return
         self.chat_i = res['result'][0]['message']['chat']['id']
-        self.telegramBot.send_message(chat_id=self.chat_i,
-                                      message_text='Hello! I\'m Zones EA. I\'m here to help you to manage your zones trades.')
-        chat = self.telegramBot.get_chat(chat_id=self.chat_i)
-        self.telegramBot.send_message(chat_id=self.chat_i,
-                                      message_text='I\'m here to help you to manage your zones trades.')
+        self.telegramBot_.send_message(chat_id=self.chat_i,
+                                       message_text='Hello! I\'m Zones EA. I\'m here to help you to manage your zones '
+                                                    'trades.')
+        chat = self.telegramBot_.get_chat(chat_id=self.chat_i)
+        self.telegramBot_.send_message(chat_id=self.chat_i,
+                                       message_text='I\'m here to help you to manage your zones trades.')
         print(self.chat_i)
         print(chat)
         print(res)
-
-        chat_title = res['result'][0]['message']['chat']['title']
-        print(chat_title)
         chat_type = res['result'][0]['message']['chat']['type']
         print(chat_type)
         message_id = res['result'][0]['message']['from']['id']
@@ -117,19 +132,20 @@ class Trades(object):
         is_bot = res['result'][0]['message']['from']['is_bot']
         print(is_bot)
 
-        if is_bot == True:
-            self.telegramBot.send_message(chat_id=self.chat_i,
+        if is_bot is True:
+            self.telegramBot_.send_message(chat_id=self.chat_i,
 
-                                          message_text="Hello! I'm Zones EA. I'm here to help you to manage your zones trades.")
+                                           message_text="Hello! I'm Zones EA. I'm here to help you to manage your "
+                                                        "zones trades.")
 
     def open_trade(self, symbol: str,
                    price: float,
                    quantity: float,
-                   order_type: int,
+                   order_type: str,
                    stop_loss: float,
                    take_profit: float,
-                   slippage: float,
-                   magic_number: float,
+                   slippage: int,
+                   magic_number: int,
                    expiration: int):
         self.symbol = symbol
         self.price = price
@@ -143,15 +159,15 @@ class Trades(object):
         self.created_at = time.time()
         self.status = 1
 
-        self.trade_id = self.zones_connect.open_trade(self.symbol,
-                                                      self.price,
-                                                      self.quantity,
-                                                      self.order_type,
-                                                      self.stop_loss,
-                                                      self.take_profit,
-                                                      self.slippage,
-                                                      self.magic_number,
-                                                      self.expiration)
+        self.zones_connect.open_trade(self.symbol,
+                                      self.price,
+                                      self.quantity,
+                                      self.order_type,
+                                      self.stop_loss,
+                                      self.take_profit,
+                                      self.slippage,
+                                      self.magic_number,
+                                      self.expiration)
 
     def close_trade(self, trade_id: int):
         self.zones_connect.close_trade(trade_id)
@@ -162,7 +178,7 @@ class Trades(object):
         return self.zones_connect.get_all_trades()
 
     def get_account_info(self):
-        return self.zmqConnector._DWX_MTX_GET_ACCOUNT_INFO_()
+        self.zmqConnector._dwx_mtx_get_account_info_()
 
     def get_trade_history(self):
         return self.zones_connect.get_trade_history()
@@ -178,3 +194,37 @@ class Trades(object):
 
     def get_open_orders(self):
         return self.zones_connect.get_open_orders()
+
+    def load_from_file(self, filename):
+
+        self.db.cur.execute("USE Zones_EA")
+        self.db.cur.execute("SELECT * FROM Zones_EA.Zones")
+        self.db.cur.execute("SELECT * FROM Zones_EA.Accounts")
+        self.db.cur.execute("SELECT * FROM Zones_EA.Orders")
+        self.db.cur.execute("SELECT * FROM Zones_EA.News")
+
+        self.db.cur.execute("SELECT * FROM Zones_EA.Candles WHERE symbol = '" + self.symbol + "'")
+        # Determine the market structure
+
+        self.symbol = self.symbol
+
+        self.zones_connect.subscribe(self.symbol)
+
+        self.zones_connect.subscribe_trades(self.symbol
+                                            )
+        self.zones_connect.subscribe_candles(self.symbol
+                                             )
+        self.zones_connect.subscribe_book_ticker(self.symbol
+                                                 )
+
+    def save_to_file(self, filename):
+
+        self.db.cur.execute("USE Zones_EA")
+        self.db.cur.execute("SELECT * FROM Zones_EA.Zones")
+        self.db.cur.execute("SELECT * FROM Zones_EA.Accounts")
+        self.db.cur.execute("SELECT * FROM Zones_EA.Orders")
+        self.db.cur.execute("SELECT * FROM Zones_EA.News")
+
+        self.file = open(filename, 'w')
+        self.file.write(str(self.db.cur.fetchall()))
+        self.file.close()
