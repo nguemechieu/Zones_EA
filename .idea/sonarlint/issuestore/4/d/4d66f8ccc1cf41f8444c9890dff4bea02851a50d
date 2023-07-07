@@ -1,0 +1,7 @@
+
+gpython:S117"QRename this parameter "START" to match the regular expression ^[_a-z][a-z0-9_]*$.(дНџ
+fpython:S117"PRename this parameter "STOP" to match the regular expression ^[_a-z][a-z0-9_]*$.(дНџ
+vpython:S1542z"^Rename function "export_model_to_MQL_code" to match the regular expression ^[a-z_][a-z0-9_]*$.(њџ€ц
+Dpython:S5806Б"+Rename this variable; it shadows a builtin.(ЫЦ™ѕ
+tpython:S117к"WRename this local variable "test_X" to match the regular expression ^[_a-z][a-z0-9_]*$.(ЙщЬгюяяяя
+upython:S117к"XRename this local variable "train_X" to match the regular expression ^[_a-z][a-z0-9_]*$.(ЙщЬгюяяяя
